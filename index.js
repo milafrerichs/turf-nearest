@@ -1,4 +1,5 @@
 var distance = require('turf-distance');
+var pointOnSurface = require('turf-point-on-surface');
 
 /**
  * Takes a {@link Point} feature and a {@link FeatureCollection} of Point features and returns the Point feature from the FeatureCollection closest to the input point.
@@ -65,11 +66,11 @@ module.exports = function(targetPoint, points){
   points.features.forEach(function(pt){
     if(!nearestPoint){
       nearestPoint = pt;
-      var dist = distance(targetPoint, pt, 'miles');
+      var dist = distance(targetPoint, pointOnSurface(pt), 'miles');
       nearestPoint.properties.distance = dist;
     }
     else{
-      var dist = distance(targetPoint, pt, 'miles');
+      var dist = distance(targetPoint, pointOnSurface(pt), 'miles');
       if(dist < nearestPoint.properties.distance){
         nearestPoint = pt;
         nearestPoint.properties.distance = dist;

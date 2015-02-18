@@ -30,6 +30,7 @@
     "doxme": "^1.4.3"
   },
   "dependencies": {
-    "turf-distance": "^1.0.0"
+    "turf-distance": "^1.0.0",
+    "turf-point-on-surface": "^1.0.0"
   }
 }
